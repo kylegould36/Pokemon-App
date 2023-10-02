@@ -33,7 +33,6 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Pokemon App!");
 });
 
-
 app.get("/pokemon", async (req, res) => {
   try {
     const pokemon = await Pokemon.find();
@@ -43,8 +42,8 @@ app.get("/pokemon", async (req, res) => {
   }
 });
 
-app.get("/pokemon/newPoke", (req, res) => {
-  res.render("pokemon/NewPoke");
+app.get("/pokemon/new", (req, res) => {
+  res.render("pokemon/New");
 });
 
 app.post("/pokemon", async (req, res) => {
@@ -65,7 +64,6 @@ app.post("/pokemon", async (req, res) => {
   }
 });
 
-
 app.get("/pokemon/:id/edit", async (req, res) => {
   try {
     const editPokemon = await Pokemon.findById(req.params.id);
@@ -77,7 +75,6 @@ app.get("/pokemon/:id/edit", async (req, res) => {
     res.send({ msg: error.message });
   }
 });
-
 
 app.put("/pokemon/:id", async (req, res) => {
   try {
@@ -92,7 +89,6 @@ app.put("/pokemon/:id", async (req, res) => {
     console.error(error);
   }
 });
-
 
 app.delete("/pokemon/:id", async (req, res) => {
   try {
@@ -112,11 +108,10 @@ app.get("/pokemon/:id", async (req, res) => {
   }
 });
 
-
 mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
-app.listen(3001, () => {
+app.listen(3000, () => {
   console.log("Listening to port 3000");
 });
