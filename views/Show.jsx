@@ -1,48 +1,28 @@
 const React = require("react");
 
-const myStyle = {
-  color: "#ffffff",
-  backgroundColor: "#000000",
-};
-const color = {
-  color: "white",
-};
-
-class Show extends React.Component {
+class NewPoke extends React.Component {
   render() {
-    const { pokemonData } = this.props;
-
-    if (!pokemonData || !pokemonData.img) {
-      return (
-        <div style={myStyle}>
-          <h1>Gotta Catch 'Em All</h1>
-          <p>Error: Invalid Pokémon Data</p>
-          <a style={color} href="/pokemon">
-            Back
-          </a>
-        </div>
-      );
-    }
-
-    const imageUrl = pokemonData.img;
-
     return (
-      <div style={myStyle}>
-        <h1>Gotta Catch 'Em All</h1>
-        <h2>{cap(pokemonData.name)}</h2>
-        <img src={imageUrl} alt={pokemonData.name} />
-        <br />
-        <br />
-        <a style={color} href="/pokemon">
-          Back
-        </a>
+      <div>
+        <h1>Add a new Pokemon!</h1>
+        <form action="/pokemon" method="POST">
+          <label htmlFor="name">Name:</label>
+          <input type="text" name="name" id="name" />
+          <br />
+
+          <label htmlFor="img">Image URL:</label>
+          <input type="text" name="img" id="img" />
+          <br />
+
+          <label htmlFor="evolved">Is this Pokemon Evolved?</label>
+          <input type="checkbox" name="evolved" id="evolved" />
+          <br />
+
+          <input type="submit" value="Add Pokemon" />
+        </form>
       </div>
     );
   }
 }
 
-function cap(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-module.exports = Show;
+module.exports = NewPoke;
