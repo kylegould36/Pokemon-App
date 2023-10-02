@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 app.get("/pokemon", async (req, res) => {
   try {
     const pokemon = await Pokemon.find();
-    res.render("pokemon/Index", { pokemon });
+    res.render("Index", { pokemon });
   } catch (error) {
     console.error(error);
   }
